@@ -63,7 +63,7 @@ for year in year_list:
         list_category =[]
         for row in table_data_category:
             cell = row.find_all('td')
-            row_text = [''.join(cells.get_text().split())for cells in cell]
+            row_text = [" ".join(cells.get_text().split())for cells in cell]
             if row_text:
                 list_category.append(row_text)
 
