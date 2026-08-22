@@ -14,6 +14,8 @@ The project automates form submission, handles CSRF tokens and HTTP sessions, ex
 - Extracts:
   - Category-wise commodity data
   - Detailed commodity data
+  - Total import values
+  - Total export values
 - Cleans and structures scraped data using Pandas.
 - Generates separate CSV files for every month and year.
 - Covers historical data from **2010 onwards**.
@@ -38,11 +40,13 @@ The scraper is currently configured for the following TradeStat report:
 
 ## Repository Structure
 
-```
+```text
 TradeStat-Scraper/
 │
 ├── scrape_export.py
 ├── scrape_import.py
+├── scrape_total_export.py
+├── scrape_total_import.py
 ├── requirements.txt
 ├── README.md
 └── .gitignore
@@ -64,7 +68,7 @@ TradeStat-Scraper/
 Clone the repository:
 
 ```bash
-git clone https://github.com/<your-username>/TradeStat-Scraper.git
+git clone https://github.com/whiteelephant32/TradeStat-Scraper.git
 ```
 
 Move into the project directory:
@@ -85,48 +89,75 @@ pip install -r requirements.txt
 
 ### Export Data
 
+Scrape detailed and category-wise export data:
+
 ```bash
 python scrape_export.py
 ```
 
+Scrape total export values:
+
+```bash
+python scrape_total_export.py
+```
+
 ### Import Data
+
+Scrape detailed and category-wise import data:
 
 ```bash
 python scrape_import.py
+```
+
+Scrape total import values:
+
+```bash
+python scrape_total_import.py
 ```
 
 ---
 
 ## Output
 
-For each selected month and year, the scraper generates two CSV files:
+For each selected month and year, the detailed scraping scripts generate two CSV files.
 
 ### Detailed Commodity Report
 
-```
+```text
 outputDetailed_<year>_<month>.csv
 ```
 
 ### Category-wise Commodity Report
 
-```
+```text
 outputCategory_<year>_<month>.csv
 ```
 
 Example:
 
-```
+```text
 outputDetailed_2026_1.csv
 outputCategory_2026_1.csv
 ```
+
+### Total Trade Reports
+
+The total-value scripts generate:
+
+```text
+2total_export_outputCategory.csv
+2total_import_outputCategory.csv
+```
+
+These files contain the extracted total import and export values from the TradeStat reports.
 
 ---
 
 ## Data Source
 
-Department of Commerce, Government of India
+**Department of Commerce, Government of India**
 
-TradeStat Portal
+**TradeStat Portal**
 
 https://tradestat.commerce.gov.in/
 
@@ -139,7 +170,6 @@ This project is intended for educational, research, and data analysis purposes o
 The scraped data belongs to the Government of India. Users should comply with the website's terms of use and applicable policies when using the data.
 
 ---
-
 
 ## Author
 
